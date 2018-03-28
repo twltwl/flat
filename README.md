@@ -175,7 +175,7 @@ flatten({
         keyB: 'bar'
     },
     keyC: { deep: { nested: { object: 2 } } }
-})
+}, { camelCase : true })
 
 // {
 //   'key1KeyA': 'foo',
