@@ -10,6 +10,7 @@ function flatten (target, opts) {
   var delimiter = opts.delimiter || '.'
   var maxDepth = opts.maxDepth
   var output = {}
+  var camelCase = !!opts.camelCase
 
   function step (object, prev, currentDepth) {
     currentDepth = currentDepth || 1
@@ -23,9 +24,16 @@ function flatten (target, opts) {
         type === '[object Array]'
       )
 
-      var newKey = prev
+      var newKey
+      if (camelCase) {
+        newKey = prev
+          ? (prev + key.charAt(0).toUpperCase() + key.slice(1))
+          : key
+      } else {
+        newKey = prev
         ? prev + delimiter + key
         : key
+      }
 
       if (!isarray && !isbuffer && isobject && Object.keys(value).length &&
         (!opts.maxDepth || currentDepth < maxDepth)) {

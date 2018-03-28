@@ -158,3 +158,28 @@ flatten({
 //   'key3.a': { b: { c: 2 } }
 // }
 ```
+
+### camelCase
+set keys in camelCase format, without delimiter
+
+
+
+``` javascript
+var flatten = require('flat')
+
+flatten({
+    key1: {
+        keyA: 'foo'
+    },
+    key2: {
+        keyB: 'bar'
+    },
+    keyC: { deep: { nested: { object: 2 } } }
+})
+
+// {
+//   'key1KeyA': 'foo',
+//   'key2KeyB': 'bar',
+//   'key3DeepNestedObject': 2
+// }
+```
