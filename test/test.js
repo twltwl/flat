@@ -180,6 +180,18 @@ suite('Flatten', function () {
       'hello.0500': 'darkness my old friend'
     })
   })
+
+  test('Should work with camelcase option', function () {
+    assert.deepEqual(flatten({
+      hello: {
+        'hello': 'world',
+        'goodbye': 'friend'
+      }
+    }, {camelCase: true}), {
+      'helloHello': 'world',
+      'helloGoodbye': 'friend'
+    })
+  })
 })
 
 suite('Unflatten', function () {
